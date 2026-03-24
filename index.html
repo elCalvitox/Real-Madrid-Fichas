@@ -15,8 +15,25 @@
         }
 
         img {
-            width: 100px;
-            height: 100px;
+            width: 200px;
+        }
+
+        #contenedor {
+            background-color: purple;
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #contenedor div {
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        table#tabla-jugadores {
+            border: 2px solid purple;
+            border-collapse: collapse;
         }
 
     </style>
@@ -26,7 +43,15 @@
 
     <h1>Jugadores del Real Madrid</h1>
 
-    <div id="contenedor"></div>
+    <div id="contenedor">
+
+    </div>
+
+    <table id="tabla-jugadores">
+
+
+
+    </table>
 
     <script>
 
@@ -91,6 +116,47 @@
 
             document.getElementById("contenedor").appendChild(nuevaCaja)
         }
+
+        //CABECERA DE LA TABLA
+        let nuevoTRCabecera = document.createElement("tr");
+        let cabeceraNombre = document.createElement("th");
+        cabeceraNombre.innerHTML="Nombre";
+        nuevoTRCabecera.appendChild(cabeceraNombre);
+
+        document.getElementById("tabla-jugadores").appendChild(nuevoTRCabecera);
+
+
+
+
+        for ( let jugador of jugadores ){
+
+
+            let nuevoTR = document.createElement("tr");
+            //creo un td para el nombre 
+            let tdNombre =document.createElement("td")
+            tdNombre.innerHTML = jugador.nombre;
+            nuevoTR.appendChild(tdNombre);
+
+            //añado a la tabla
+            document.getElementById("tabla-jugadores").appendChild(nuevoTR);
+
+            tdEdad = document.createElement("td");
+            tdEdad.innerHTML = jugador.edad;
+            nuevoTR.appendChild(tdEdad)
+
+
+
+
+        }
+
+            //añado la imagen
+            let tdFoto = document.createElement("td");
+            nuevaFoto = document.createElement("img");
+            nuevaFoto.src = jugador.foto;
+            tdFoto.appendChild(tdFoto)
+            
+            document.getElementById("tabla-jugadores").appendChild(nuevoTR)
+
 
     </script>
 
